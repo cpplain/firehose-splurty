@@ -5,6 +5,16 @@ header {
   border-top: 9px solid #222222;
 }
 
+h1 {
+  font-family: 'robotoregular', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'robotoregular', sans-serif;  
+}
+
 .clear {
   clear: both;
 }
@@ -43,6 +53,8 @@ header {
   color: black;
   font-size: 25px;
   border-bottom: 1px solid #dfdfdf;
+  font-family: 'robotoregular', sans-serif;
+  font-weight: bold;
 }
 
 hr {

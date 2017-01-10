@@ -24,32 +24,51 @@
       &ldquo;I do not think it means what you think it means.&rdquo;
     </div>
     <div class="col-xs-5 links">
-      <%= link_to 'Contribute', new_quote_path %>
+      <!-- Button trigger modal -->
+      <%= link_to 'Contribute', '#', data: { toggle: 'modal', target: '#myModal' } %>
       <%= link_to 'About', about_path %>
     </div>
   </header>
-<hr />
-<br class="clear" />
-
-<div class="container">
-  <% if flash[:error].present? %>
-    <div class="col-xs-10 col-xs-offset-1 alert alert-danger">
-      <%= flash[:error].html_safe %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Contribute your quote</h4>
+        </div>
+        <%= simple_form_for Quote.new do |f| %>
+          <div class="modal-body">
+            <%= f.input :quotation %>
+            <%= f.input :quotee %>
+          </div> 
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit 'Create', class: 'btn-danger' %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-  <%= yield %>
-</div>
-
-<div class="footer">
-  <div class="container">
-    <div class="col-xs-6">
-      <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
-    </div>
-    <div class="col-xs-6 footer-blurb">
-      Proudly hacked in Bainbridge Island, WA by <a href="https://www.linkedin.com/in/christopherplain">Christopher</a><br />
-      Want to build your own Inconceivable Quote Machine? <a href="https://www.thefirehoseproject.com">Learn how to code here</a>
   </div>
-</div>
-
+  <hr />
+  <br class="clear" />
+  <div class="container">
+    <% if flash[:error].present? %>
+      <div class="col-xs-10 col-xs-offset-1 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="col-xs-6">
+        <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
+      </div>
+      <div class="col-xs-6 footer-blurb">
+        Proudly hacked in Bainbridge Island, WA by <a href="https://www.linkedin.com/in/christopherplain">Christopher</a><br />
+        Want to build your own Inconceivable Quote Machine? <a href="https://www.thefirehoseproject.com">Learn how to code here</a>
+    </div>
+  </div>
 </body>
 </html>

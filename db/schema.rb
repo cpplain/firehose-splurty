@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 20170110060937) do
   enable_extension "plpgsql"
 
   create_table "quotes", force: true do |t|
-    t.string   "quotation"
-    t.string   "quotee"
+    t.string   "quote"
+    t.string   "character"
+    t.string   "movie"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
